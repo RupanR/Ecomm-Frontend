@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const AuthContext = createContext();
 
@@ -10,19 +10,18 @@ const AuthProvider = ({ children }) => {
   });
 
   // setting the user and removing the user from local storage
-
   useEffect(() => {
     if (user) {
-      localStorage.setItem("user", JSON.stringify(user)); // setuser or login
+      localStorage.setItem("user", JSON.stringify(user));
     } else {
-      localStorage.removeItem("user"); //remove user or logout
+      localStorage.removeItem("user"); // Remove user on logout
     }
   }, [user]);
 
   //login user
 
   const login = (userData) => {
-    console.log("User Logged in", userData);
+    console.log("User logged in:", userData); 
     setUser(userData);
   };
 

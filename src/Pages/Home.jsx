@@ -67,7 +67,42 @@ const Home = () => {
       .catch(() => alert("Error in removing items to cart"));
   };
 
-  return <div></div>;
+  return (
+    <div className="min-h-screen bg-gradient-to-br from=[#f8fafc] to-[#e2e8f0] px-6 py-10">
+      <h1>
+        Explore Our <span>Products</span>
+      </h1>
+      {products.length === 0 ? (
+        <p>No Products Available.</p>
+      ) : (
+        <div>
+          {products.map((product) => {
+            const inCart = cartItems.some(
+              (item) => item.product._id === product._id
+            );
+            return (
+              <div key={product._id}>
+                <div>
+                  <h2>{product.name}</h2>
+                  <p>${product.price}</p>
+                  <p>{product.description}</p>
+                </div>
+                {inCart ? (
+                  <button onClick={() => removeFromCart(product._id)}>
+                    Remove from Cart
+                  </button>
+                ) : (
+                  <button onClick={() => addToCart(product._id)}>
+                    Add to cart
+                  </button>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Home;
