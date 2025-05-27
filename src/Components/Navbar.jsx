@@ -3,13 +3,13 @@ import { AuthContext } from "../Context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  //const navigate = useNavigate();
   const { user, logout } = useContext(AuthContext);
   const isAdmin = user?.role?.toLowerCase() === "admin";
-  const navigate = useNavigate();
 
   const handleLogout = () =>{
     logout();
-   // navigate("/login")
+   //navigate("/login")
   }
   return (
     <nav>
