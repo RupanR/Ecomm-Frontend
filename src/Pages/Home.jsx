@@ -35,7 +35,7 @@ const Home = () => {
   const addToCart = async (productId) => {
     if (!user) {
       alert("Please login to add items to the cart");
-      setTimeout(() => navigate("/login"), 1500);
+      setTimeout(() => navigate("/login"), 1000);
       return;
     }
     await axios
