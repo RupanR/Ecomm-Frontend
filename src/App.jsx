@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import Navbar from "./Components/Navbar";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
@@ -20,32 +20,29 @@ const App = () => {
 
   return (
     <>
-      <div>
-        <Navbar />
-      </div>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/order" element={<Order />} />
-          <Route
-            path="/admin"
-            element={
-              user && user.role?.toLowerCase() === "admin" ? (
-                <AdminDashboard />
-              ) : (
-                <Navigate to={"/"} />
-              )
-            }
-          />
+      <Navbar />
 
-          <Route path="/success" element={<Success />} />
-          <Route path="/cancel" element={<Cancel />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/order" element={<Order />} />
+        <Route
+          path="/admin"
+          element={
+            user && user.role?.toLowerCase() === "admin" ? (
+              <AdminDashboard />
+            ) : (
+              <Navigate to={"/"} />
+            )
+          }
+        />
+
+        <Route path="/success" element={<Success />} />
+        <Route path="/cancel" element={<Cancel />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
   );
 };
