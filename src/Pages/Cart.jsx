@@ -15,7 +15,7 @@ const Cart = () => {
       return;
     }
     axios
-      .get("http://localhost:5000/api/cart/view", {
+      .get("https://fsd-demo-backend-vo0n.onrender.com/api/cart/view", {
         headers: { Authorization: `Bearer ${user.token}` },
       })
       .then((res) => {
@@ -41,7 +41,7 @@ const Cart = () => {
       return;
     await axios
       .put(
-        `http://localhost:5000/api/cart/update/${productId}`,
+        `https://fsd-demo-backend-vo0n.onrender.com/api/cart/update/${productId}`,
         { change },
         {
           headers: { Authorization: `Bearer ${user.token}` },
@@ -61,7 +61,7 @@ const Cart = () => {
 
   const removeFromCart = async (productId) => {
     await axios
-      .delete(`http://localhost:5000/api/cart/remove/${productId}`, {
+      .delete(`https://fsd-demo-backend-vo0n.onrender.com/api/cart/remove/${productId}`, {
         headers: { Authorization: `Bearer ${user.token}` },
       })
       .then(() => {
@@ -82,7 +82,7 @@ const placeOrder = async() => {
     }
   await axios
       .post(
-        "http://localhost:5000/api/order/create",
+        "https://fsd-demo-backend-vo0n.onrender.com/api/order/create",
         { cartItems: cart },
         {
           headers: { Authorization: `Bearer ${user.token}` },

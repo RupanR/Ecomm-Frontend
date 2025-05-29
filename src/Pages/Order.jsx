@@ -17,7 +17,7 @@ const Order = () => {
       return;
     }
     axios
-      .get("http://localhost:5000/api/order/myorders", {
+      .get("https://fsd-demo-backend-vo0n.onrender.com/api/order/myorders", {
         headers: { Authorization: `Bearer ${user.token}` },
       })
       .then((res) => {
@@ -48,7 +48,7 @@ const Order = () => {
     }
     await axios
       .post(
-        "http://localhost:5000/api/payments/checkout",
+        "https://fsd-demo-backend-vo0n.onrender.com/api/payments/checkout",
         {
           items: allItems,
           amount: totalAmount,

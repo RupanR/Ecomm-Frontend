@@ -13,7 +13,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/auth/register", userData);
+      await axios.post("https://fsd-demo-backend-vo0n.onrender.com/api/auth/register", userData);
       alert("Registration Successful please proceed to login");
       navigate("/login");
     } catch (error) {

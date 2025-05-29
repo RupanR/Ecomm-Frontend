@@ -12,7 +12,7 @@ const Home = () => {
   useEffect(() => {
     //fetch products
     axios
-      .get("http://localhost:5000/api/products/getproducts")
+      .get("https://fsd-demo-backend-vo0n.onrender.com/api/products/getproducts")
       .then((res) => setProducts(res.data.data || []))
       .catch((err) => console.log("Unable to retrieve", err));
 
@@ -23,7 +23,7 @@ const Home = () => {
         return;
       }
       axios
-        .get("http://localhost:5000/api/cart/view", {
+        .get("https://fsd-demo-backend-vo0n.onrender.com/api/cart/view", {
           headers: { Authorization: `Bearer ${user.token}` },
         })
         .then((res) => setCartItems(res.data.data.items || []))
@@ -40,7 +40,7 @@ const Home = () => {
     }
     await axios
       .post(
-        "http://localhost:5000/api/cart/add",
+        "https://fsd-demo-backend-vo0n.onrender.com/api/cart/add",
         { productId, quantity: 1 },
         {
           headers: { Authorization: `Bearer ${user.token}` },
@@ -56,7 +56,7 @@ const Home = () => {
 
   const removeFromCart = async (productId) => {
     await axios
-      .delete(`http://localhost:5000/api/cart/remove/${productId}`, {
+      .delete(`https://fsd-demo-backend-vo0n.onrender.com/api/cart/remove/${productId}`, {
         headers: { Authorization: `Bearer ${user.token}` },
       })
       .then(() => {
