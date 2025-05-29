@@ -74,12 +74,13 @@ const Cart = () => {
       .catch(() => alert("Error in removing items to cart"));
   };
 
-  const placeOrder = async () => {
+ 
+const placeOrder = async() => {
     if (cart.length === 0) {
       alert("cart is empty cannot place order");
       return;
     }
-    await axios
+  await axios
       .post(
         "http://localhost:5000/api/order/create",
         { cartItems: cart },
@@ -88,13 +89,12 @@ const Cart = () => {
         }
       )
       .then(() => {
-        alert("Order placed Successfully");
+        alert("Order placed successfully!");
         setCart([]);
         navigate("/order");
       })
-      .catch(() => alert("Error in placing the order"));
+      .catch(() => alert("Error placing order!"));
   };
-
   return (
     <div className="p-6 min-h-screen bg-gray-50">
       <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">

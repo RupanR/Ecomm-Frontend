@@ -79,22 +79,28 @@ const Order = () => {
         <div className="max-w-4xl mx-auto">
           {orders.map((order) => {
             return (
-              <div key={order._id}>
-                <h2>
-                  Order Id: <span>{order._id}</span>
+              <div
+                key={order._id}
+                className="bg-white shadow-md rounded p-5 mb-6"
+              >
+                <h2 className="text-xl font-semibold mb-2">
+                  Order Id: <span className="text-blue-500">{order._id}</span>
                 </h2>
                 <p>
                   <strong>Status:</strong>
-                  <span>{order.status}</span>
+                  <span className="text-yellow-500">{order.status}</span>
                 </p>
                 <p>
                   <strong>Total Price:</strong>
-                  <span>${order.totalPrice}</span>
+                  <span className="text-green-500">${order.totalPrice}</span>
                 </p>
-                <h3>🛍️Items:</h3>
+                <h3 className="text-lg font-semibold mt-4 mb-2">🛍️Items:</h3>
                 {order.products?.map((item, index) => {
                   return (
-                    <div key={index}>
+                    <div
+                      key={index}
+                      className="border rounded p-2 mb-2 flex justify-between items-center"
+                    >
                       <span>{item?.product?.name || "Product Not Found"}</span>
                       <span>
                         {item?.product?.price || 0} ❌ {item.quantity}
@@ -106,7 +112,12 @@ const Order = () => {
             );
           })}
           {orders.some((order) => order.status === "Pending") && (
-            <button onClick={proceedToPayment}>Proceed to Payment</button>
+            <button
+              onClick={proceedToPayment}
+              className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded shadow mt-4 mb-4"
+            >
+              Proceed to Payment
+            </button>
           )}
         </div>
       )}
